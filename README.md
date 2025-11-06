@@ -7,7 +7,7 @@ FastAPI-based web application for detecting brain tumors from MRI scan photos.
 ```bash
 python -m venv venv
 ```
-3. Install Vercel CLI:
+3. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
@@ -113,6 +113,7 @@ If you run out of GPU memory:
 ```bash
 pip install -r requirements.txt
 ```
+
 
 
 
