@@ -1,22 +1,31 @@
 import numpy as np
-import cv2
+from PIL import Image
 
 
-def preprocess_image_onnx(image):
-	img = cv2.resize(image, (128, 128))
+def preprocess_image_onnx(image: Image.Image):
+	"""
+	Preprocesses a PIL Image object for ONNX inference without using OpenCV.
 
-	# Ensure RGB format
-	if len(img.shape) == 2:  # Grayscale
-		img = cv2.cvtColor(img, cv2.COLOR_GRAY2RGB)
-	elif img.shape[2] == 4:  # RGBA
-		img = cv2.cvtColor(img, cv2.COLOR_RGBA2RGB)
+	Args:
+		image: A PIL Image object (e.g., from Image.open(io.BytesIO(bytes))).
 
-	img = img.astype(np.float32) / 255.0
+	Returns:
+		A numpy array ready for ONNX inference (shape: 1, C, H, W).
+	"""
+	# 1. Convert to RGB and Resize (H, W) to (128, 128)
+	# The .convert("RGB") handles Grayscale/RGBA conversion automatically.
+	img = image.convert("RGB").resize((128, 128))
 
-	# Transpose to (C, H, W) format
-	img = np.transpose(img, (2, 0, 1))
+	# 2. Convert to NumPy array (shape: H, W, C)
+	img_array = np.array(img)
 
-	# Add batch dimension (1, C, H, W)
-	img_array = np.expand_dims(img, axis=0)
+	# 3. Normalize (from 0-255 to 0-1) and convert to float32
+	img_normalized = img_array.astype(np.float32) / 255.0
 
-	return img_array
+	# 4. Transpose to (C, H, W) format (PyTorch/ONNX standard)
+	img_transposed = np.transpose(img_normalized, (2, 0, 1))
+
+	# 5. Add batch dimension (1, C, H, W)
+	final_input = np.expand_dims(img_transposed, axis=0)
+
+	return final_input
