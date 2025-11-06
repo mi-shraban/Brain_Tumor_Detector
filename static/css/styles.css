@@ -1,0 +1,197 @@
+:root {
+    --bg: #121212;
+	--panel: #1e1e1e;
+	--text: #e0e0e0;
+	--muted: #b0b0b0;
+	--primary: #00bcd4;
+	--primary-2: #0097a7;
+	--border: #2a2a2a;
+	--darkeraccent: #264B5D;
+	--name: #d8e2dc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(90deg, var(--darkeraccent), var(--primary));
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    background: var(--border);
+    color: var(--text);
+    border-radius: 20px;
+    border: 4px solid var(--darkeraccent);
+    padding: 40px;
+    max-width: 70%;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    color: var(--name);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.upload-section {
+    margin-top: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.btn-primary, .btn-secondary {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: var(--text);
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, var(--darkeraccent), var(--primary));
+}
+
+.btn-primary:hover {
+    background: linear-gradient(90deg, var(--primary), var(--darkeraccent));
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: linear-gradient(90deg, var(--primary), var(--darkeraccent));
+    width: 100%;
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(90deg, var(--darkeraccent), var(--primary));
+}
+
+#fileName {
+    margin-top: 10px;
+    color: var(--text);
+    font-style: italic;
+}
+
+#imagePreview {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#preview {
+    border: 3px solid var(--text);
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.probabilities-section {
+    color : var(--darkeraccent);
+}
+
+.loader {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #667eea;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.result {
+    background: #f7fafc;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.result h2 {
+    color: #2d3748;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#prediction {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--darkeraccent);
+    margin: 10px 0;
+    text-align: center;
+}
+
+#confidence {
+    font-size: 18px;
+    color: #4a5568;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.probabilities-grid{
+    display: block;
+    text-align: center;
+}
+
+#probabilities {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.prob-item {
+    padding: 6px 10px;
+    margin: 4px 0;
+    background: var(--border);
+    color: var(--text);
+    border-radius: 6px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.description {
+    text-align: center;
+}
+
+.disclaimer {
+    color : #E63A3A;
+}
+
+.footer {
+    text-align: center;
+}
+
+@media (orientation: portrait) {
+    .container {
+        min-width: 100%;
+    }
+}

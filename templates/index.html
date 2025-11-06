@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Tumor Detector</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <meta name="description" content="AI-powered brain tumor detection from MRI scans using deep learning">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Brain Tumor Detector</h1>
+            <p class="subtitle">Deep Learning Based MRI Scan Classifier</p>
+            <p class="description">
+                Upload a brain MRI scan photo. Dimensions must be between the range of: [512x512px, 128x128px] <br/>
+            </p>
+        </header>
+
+        <div class="upload-section">
+            <input type="file" id="fileInput" accept="image/jpeg,image/jpg,image/png" style="display: none;">
+            <button id="uploadBtn" class="btn-primary">
+                <span class="btn-icon"></span>
+                <b>Choose MRI Scan Photo</b>
+            </button>
+            <div id="fileName" class="file-name"></div>
+            <p class="hint">Supported formats: JPG, PNG</p>
+        </div>
+
+        <div id="imagePreview" class="image-preview hidden">
+            <h3>Uploaded Image</h3>
+            <div class="image-container">
+                <img id="preview" src="" alt="MRI Scan Preview">
+            </div>
+        </div>
+
+        <button id="predictBtn" class="btn-secondary hidden">
+            <span class="btn-icon"></span>
+            Analyze MRI Scan
+        </button>
+
+        <div id="loader" class="loader hidden">
+            <div class="spinner"></div>
+            <p>Analyzing MRI scan...</p>
+        </div>
+
+        <div id="result" class="result hidden">
+            <h2>Analysis Results</h2>
+
+            <div class="result-main">
+                <div id="prediction" class="prediction"></div>
+                <div id="confidence" class="confidence"></div>
+            </div>
+
+            <div class="probabilities-section">
+                <h3>Detailed Probabilities</h3>
+                <div id="probabilities" class="probabilities-grid"></div>
+            </div>
+
+            <div class="disclaimer">
+                <strong>Medical Disclaimer:</strong> This is only an experimental tool. For any kind of diagnosis,
+                please consult with qualified professionals.
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>Powered by CNN Deep Learning Model Built With <b>PyTorch</b> <br/>
+                [Model Details:
+                <b>Accuracy: 95.88%</b>
+                <b>Precision: 95.74%</b>
+                <b>Recall: 95.56%</b>]
+            </p>
+
+            <p class="tumor-info">
+                <strong>Tumor Types:</strong> <br/>
+                Glioma - Brain tissue tumor <br/>
+                Meningioma - Membrane tumor<br/>
+                Pituitary - Pituitary gland tumor
+            </p>
+        </footer>
+    </div>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
