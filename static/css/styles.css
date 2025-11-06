@@ -43,6 +43,15 @@ h1 {
     margin-bottom: 10px;
 }
 
+link {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+link:hover {
+    text-decoration: underline;
+}
+
 .subtitle {
     text-align: center;
     color: #666;
@@ -187,6 +196,10 @@ h1 {
 }
 
 .footer {
+    display: flex;
+    justify-content: end;
+    flex-direction: column;
+    flex-start: end;
     text-align: center;
 }
 
